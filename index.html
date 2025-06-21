@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Database</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 1rem;
+        }
+        
+        @media (min-width: 640px) {
+            .masonry-grid { column-count: 2; }
+        }
+        
+        @media (min-width: 1024px) {
+            .masonry-grid { column-count: 3; }
+        }
+        
+        @media (min-width: 1280px) {
+            .masonry-grid { column-count: 4; }
+        }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+        }
+        
+        .quote-card {
+            transition: all 0.3s ease;
+        }
+        
+        .quote-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .tag {
+            transition: all 0.2s ease;
+        }
+        
+        .tag:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useMemo } = React;
+
+        // Sample data - replace with your actual database calls
+        const sampleQuotes = [
+            {
+                id: 1,
+                quote: "The ultimate goal of the architect is to create a paradise. Every house, every product of architecture is a tiny paradise. This is why we love architecture.",
+                author: "Alvar Aalto",
+                source: "Architecture and Humanism",
+                tags: ["architecture", "design", "paradise", "creativity"]
+            },
+            {
+                id: 2,
+                quote: "Cities have the capability of providing something for everybody, only because, and only when, they are created by everybody.",
+                author: "Jane Jacobs",
+                source: "The Death and Life of Great American Cities",
+                tags: ["city planning", "community", "urbanism"]
+            },
+            {
+                id: 3,
+                quote: "Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.",
+                author: "Helen Keller",
+                source: "The Story of My Life",
+                tags: ["optimism", "faith", "achievement", "hope"]
+            },
+            {
+                id: 4,
+                quote: "Segregation is not a humiliation but a benefit, and ought to be so regarded by you gentlemen.",
+                author: "Woodrow Wilson",
+                source: "Meeting with African American leaders, 1914",
+                tags: ["segregation", "history", "civil rights"]
+            },
+            {
+                id: 5,
+                quote: "The secret to getting ahead is getting started.",
+                author: "Mark Twain",
+                source: "Various attributed sources",
+                tags: ["motivation", "action", "success"]
+            },
+            {
+                id: 6,
+                quote: "In every walk with nature, one receives far more than they seek.",
+                author: "John Muir",
+                source: "Our National Parks",
+                tags: ["nature", "wisdom", "environment"]
+            },
+            {
+                id: 7,
+                quote: "The best time to plant a tree was 20 years ago. The second best time is now.",
+                author: "Chinese Proverb",
+                source: "Traditional saying",
+                tags: ["action", "time", "wisdom", "environment"]
+            },
+            {
+                id: 8,
+                quote: "A society grows great when old men plant trees whose shade they know they shall never sit in.",
+                author: "Greek Proverb",
+                source: "Traditional saying",
+                tags: ["society", "legacy", "future", "wisdom"]
+            }
+        ];
+
+        const QuoteCard = ({ quote, onTagClick }) => {
+            const cardColors = [
+                'bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200',
+                'bg-gradient-to-br from-green-50 to-green-100 border-green-200',
+                'bg-gradient-to-br from-purple-50 to-purple-100 border-purple-200',
+                'bg-gradient-to-br from-pink-50 to-pink-100 border-pink-200',
+                'bg-gradient-to-br from-yellow-50 to-yellow-100 border-yellow-200',
+                'bg-gradient-to-br from-indigo-50 to-indigo-100 border-indigo-200'
+            ];
+            
+            const tagColors = [
+                'bg-blue-500 hover:bg-blue-600',
+                'bg-green-500 hover:bg-green-600',
+                'bg-purple-500 hover:bg-purple-600',
+                'bg-pink-500 hover:bg-pink-600',
+                'bg-yellow-500 hover:bg-yellow-600',
+                'bg-indigo-500 hover:bg-indigo-600',
+                'bg-red-500 hover:bg-red-600',
+                'bg-teal-500 hover:bg-teal-600'
+            ];
+
+            const cardColor = cardColors[quote.id % cardColors.length];
+            
+            return (
+                <div className={`quote-card p-6 rounded-lg border-2 ${cardColor} shadow-md`}>
+                    <blockquote className="text-gray-800 mb-4 leading-relaxed">
+                        <i className="fas fa-quote-left text-gray-400 mr-2"></i>
+                        {quote.quote}
+                        <i className="fas fa-quote-right text-gray-400 ml-2"></i>
+                    </blockquote>
+                    
+                    <div className="mb-3">
+                        <p className="font-semibold text-gray-700">— {quote.author}</p>
+                        {quote.source && (
+                            <p className="text-sm text-gray-500 italic">{quote.source}</p>
+                        )}
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2">
+                        {quote.tags.map((tag, index) => (
+                            <span
+                                key={tag}
+                                onClick={() => onTagClick(tag)}
+                                className={`tag px-3 py-1 text-xs font-medium text-white rounded-full cursor-pointer ${tagColors[index % tagColors.length]}`}
+                            >
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const AddQuoteForm = ({ isOpen, onClose, onAdd }) => {
+            const [formData, setFormData] = useState({
+                quote: '',
+                author: '',
+                source: '',
+                tags: ''
+            });
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                const newQuote = {
+                    ...formData,
+                    tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag),
+                    id: Date.now()
+                };
+                onAdd(newQuote);
+                setFormData({ quote: '', author: '', source: '', tags: '' });
+                onClose();
+            };
+
+            if (!isOpen) return null;
+
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+                    <div className="bg-white rounded-lg p-6 max-w-md w-full max-h-screen overflow-y-auto">
+                        <div className="flex justify-between items-center mb-4">
+                            <h3 className="text-lg font-semibold">Add New Quote</h3>
+                            <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+                                <i className="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Quote *</label>
+                                <textarea
+                                    value={formData.quote}
+                                    onChange={(e) => setFormData({...formData, quote: e.target.value})}
+                                    className="w-full p-2 border rounded-md"
+                                    rows="4"
+                                    required
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Author</label>
+                                <input
+                                    type="text"
+                                    value={formData.author}
+                                    onChange={(e) => setFormData({...formData, author: e.target.value})}
+                                    className="w-full p-2 border rounded-md"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Source</label>
+                                <input
+                                    type="text"
+                                    value={formData.source}
+                                    onChange={(e) => setFormData({...formData, source: e.target.value})}
+                                    className="w-full p-2 border rounded-md"
+                                />
+                            </div>
+                            
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Tags (comma-separated)</label>
+                                <input
+                                    type="text"
+                                    value={formData.tags}
+                                    onChange={(e) => setFormData({...formData, tags: e.target.value})}
+                                    className="w-full p-2 border rounded-md"
+                                    placeholder="motivation, wisdom, success"
+                                />
+                            </div>
+                            
+                            <div className="flex gap-2">
+                                <button
+                                    type="submit"
+                                    className="flex-1 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+                                >
+                                    Add Quote
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={onClose}
+                                    className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+
+        const QuoteDatabase = () => {
+            const [quotes, setQuotes] = useState(sampleQuotes);
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedTags, setSelectedTags] = useState([]);
+            const [showAddForm, setShowAddForm] = useState(false);
+
+            // Get all unique tags
+            const allTags = useMemo(() => {
+                const tagSet = new Set();
+                quotes.forEach(quote => {
+                    quote.tags.forEach(tag => tagSet.add(tag));
+                });
+                return Array.from(tagSet).sort();
+            }, [quotes]);
+
+            // Filter quotes based on search and selected tags
+            const filteredQuotes = useMemo(() => {
+                return quotes.filter(quote => {
+                    const matchesSearch = searchTerm === '' || 
+                        quote.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        quote.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        quote.source.toLowerCase().includes(searchTerm.toLowerCase());
+                    
+                    const matchesTags = selectedTags.length === 0 || 
+                        selectedTags.every(tag => quote.tags.includes(tag));
+                    
+                    return matchesSearch && matchesTags;
+                });
+            }, [quotes, searchTerm, selectedTags]);
+
+            const handleTagClick = (tag) => {
+                setSelectedTags(prev => 
+                    prev.includes(tag) 
+                        ? prev.filter(t => t !== tag)
+                        : [...prev, tag]
+                );
+            };
+
+            const handleAddQuote = (newQuote) => {
+                setQuotes(prev => [newQuote, ...prev]);
+            };
+
+            return (
+                <div className="min-h-screen bg-gray-50">
+                    {/* Header */}
+                    <header className="bg-white shadow-sm border-b">
+                        <div className="max-w-7xl mx-auto px-4 py-6">
+                            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <h1 className="text-3xl font-bold text-gray-900">
+                                    <i className="fas fa-quote-left text-blue-500 mr-2"></i>
+                                    Quote Database
+                                </h1>
+                                <button
+                                    onClick={() => setShowAddForm(true)}
+                                    className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 flex items-center gap-2 w-fit"
+                                >
+                                    <i className="fas fa-plus"></i>
+                                    Add Quote
+                                </button>
+                            </div>
+                        </div>
+                    </header>
+
+                    {/* Search and Filter Section */}
+                    <div className="max-w-7xl mx-auto px-4 py-6">
+                        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
+                            {/* Search Bar */}
+                            <div className="mb-4">
+                                <div className="relative">
+                                    <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                                    <input
+                                        type="text"
+                                        placeholder="Search quotes, authors, or sources..."
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Tag Filter */}
+                            <div>
+                                <h3 className="text-sm font-medium text-gray-700 mb-2">Filter by tags:</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {allTags.map(tag => (
+                                        <button
+                                            key={tag}
+                                            onClick={() => handleTagClick(tag)}
+                                            className={`px-3 py-1 text-sm rounded-full transition-colors ${
+                                                selectedTags.includes(tag)
+                                                    ? 'bg-blue-500 text-white'
+                                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                            }`}
+                                        >
+                                            {tag}
+                                        </button>
+                                    ))}
+                                </div>
+                                {selectedTags.length > 0 && (
+                                    <button
+                                        onClick={() => setSelectedTags([])}
+                                        className="mt-2 text-sm text-blue-500 hover:text-blue-700"
+                                    >
+                                        Clear all filters
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Results Count */}
+                        <div className="mb-4">
+                            <p className="text-gray-600">
+                                Showing {filteredQuotes.length} of {quotes.length} quotes
+                            </p>
+                        </div>
+
+                        {/* Masonry Grid */}
+                        <div className="masonry-grid">
+                            {filteredQuotes.map(quote => (
+                                <div key={quote.id} className="masonry-item">
+                                    <QuoteCard quote={quote} onTagClick={handleTagClick} />
+                                </div>
+                            ))}
+                        </div>
+
+                        {filteredQuotes.length === 0 && (
+                            <div className="text-center py-12">
+                                <i className="fas fa-search text-gray-300 text-4xl mb-4"></i>
+                                <p className="text-gray-500 text-lg">No quotes found matching your criteria.</p>
+                                <p className="text-gray-400">Try adjusting your search or filters.</p>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Add Quote Modal */}
+                    <AddQuoteForm
+                        isOpen={showAddForm}
+                        onClose={() => setShowAddForm(false)}
+                        onAdd={handleAddQuote}
+                    />
+                </div>
+            );
+        };
+
+        ReactDOM.render(<QuoteDatabase />, document.getElementById('root'));
+    </script>
+</body>
+</html>
