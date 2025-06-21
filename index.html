@@ -57,64 +57,708 @@
         const { useState, useEffect, useMemo } = React;
 
         // Sample data - replace with your actual database calls
-        const sampleQuotes = [
-            {
-                id: 1,
-                quote: "The ultimate goal of the architect is to create a paradise. Every house, every product of architecture is a tiny paradise. This is why we love architecture.",
-                author: "Alvar Aalto",
-                source: "Architecture and Humanism",
-                tags: ["architecture", "design", "paradise", "creativity"]
-            },
-            {
-                id: 2,
-                quote: "Cities have the capability of providing something for everybody, only because, and only when, they are created by everybody.",
-                author: "Jane Jacobs",
-                source: "The Death and Life of Great American Cities",
-                tags: ["city planning", "community", "urbanism"]
-            },
-            {
-                id: 3,
-                quote: "Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.",
-                author: "Helen Keller",
-                source: "The Story of My Life",
-                tags: ["optimism", "faith", "achievement", "hope"]
-            },
-            {
-                id: 4,
-                quote: "Segregation is not a humiliation but a benefit, and ought to be so regarded by you gentlemen.",
-                author: "Woodrow Wilson",
-                source: "Meeting with African American leaders, 1914",
-                tags: ["segregation", "history", "civil rights"]
-            },
-            {
-                id: 5,
-                quote: "The secret to getting ahead is getting started.",
-                author: "Mark Twain",
-                source: "Various attributed sources",
-                tags: ["motivation", "action", "success"]
-            },
-            {
-                id: 6,
-                quote: "In every walk with nature, one receives far more than they seek.",
-                author: "John Muir",
-                source: "Our National Parks",
-                tags: ["nature", "wisdom", "environment"]
-            },
-            {
-                id: 7,
-                quote: "The best time to plant a tree was 20 years ago. The second best time is now.",
-                author: "Chinese Proverb",
-                source: "Traditional saying",
-                tags: ["action", "time", "wisdom", "environment"]
-            },
-            {
-                id: 8,
-                quote: "A society grows great when old men plant trees whose shade they know they shall never sit in.",
-                author: "Greek Proverb",
-                source: "Traditional saying",
-                tags: ["society", "legacy", "future", "wisdom"]
-            }
-        ];
+       const sampleQuotes = [
+  {
+    id: 201,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 202,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 203,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 204,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 205,
+    quote: 'Maintenance is where most systems fail—and where few designers look.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['maintenance']
+  },
+  {
+    id: 206,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 207,
+    quote: 'Parasitarchies survive by inheriting legitimacy and sabotaging accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['parasitarchy']
+  },
+  {
+    id: 208,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 209,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 210,
+    quote: 'A broken system is still a system. It’s just working toward different ends.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['systems']
+  },
+  {
+    id: 211,
+    quote: "Cities are not problems to be solved—they're questions we must learn to live with.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urbanism']
+  },
+  {
+    id: 212,
+    quote: 'Public trust is easier to perform than to build, especially in digital systems.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['public trust']
+  },
+  {
+    id: 213,
+    quote: 'Zoning codes shape lives more than most laws.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urban policy']
+  },
+  {
+    id: 214,
+    quote: 'Parasitarchies survive by inheriting legitimacy and sabotaging accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['parasitarchy']
+  },
+  {
+    id: 215,
+    quote: "Cities are not problems to be solved—they're questions we must learn to live with.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urbanism']
+  },
+  {
+    id: 216,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 217,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 218,
+    quote: 'Zoning codes shape lives more than most laws.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urban policy']
+  },
+  {
+    id: 219,
+    quote: 'Service design without consequence is theater.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['service design']
+  },
+  {
+    id: 220,
+    quote: 'A system that simulates choice while denying consequence is not democratic.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['platform governance']
+  },
+  {
+    id: 221,
+    quote: 'A system that simulates choice while denying consequence is not democratic.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['platform governance']
+  },
+  {
+    id: 222,
+    quote: 'Automation without discretion is acceleration without direction.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['automation']
+  },
+  {
+    id: 223,
+    quote: 'A broken system is still a system. It’s just working toward different ends.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['systems']
+  },
+  {
+    id: 224,
+    quote: 'A system that simulates choice while denying consequence is not democratic.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['platform governance']
+  },
+  {
+    id: 225,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 226,
+    quote: 'Automation without discretion is acceleration without direction.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['automation']
+  },
+  {
+    id: 227,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 228,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 229,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 230,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 231,
+    quote: 'A system that simulates choice while denying consequence is not democratic.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['platform governance']
+  },
+  {
+    id: 232,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 233,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 234,
+    quote: "Cities are not problems to be solved—they're questions we must learn to live with.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urbanism']
+  },
+  {
+    id: 235,
+    quote: 'Maintenance is where most systems fail—and where few designers look.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['maintenance']
+  },
+  {
+    id: 236,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 237,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 238,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 239,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 240,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 241,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 242,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 243,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 244,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 245,
+    quote: 'Automation without discretion is acceleration without direction.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['automation']
+  },
+  {
+    id: 246,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 247,
+    quote: 'Service design without consequence is theater.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['service design']
+  },
+  {
+    id: 248,
+    quote: 'Maintenance is where most systems fail—and where few designers look.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['maintenance']
+  },
+  {
+    id: 249,
+    quote: 'A system that simulates choice while denying consequence is not democratic.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['platform governance']
+  },
+  {
+    id: 250,
+    quote: 'Public trust is easier to perform than to build, especially in digital systems.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['public trust']
+  },
+  {
+    id: 251,
+    quote: "Decay isn’t always visible. Sometimes it just looks like 'business as usual.'",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['institutional decay']
+  },
+  {
+    id: 252,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 253,
+    quote: 'Infrastructure is not neutral—it encodes values, access, and exclusion.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['civic infrastructure']
+  },
+  {
+    id: 254,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  },
+  {
+    id: 255,
+    quote: 'Zoning codes shape lives more than most laws.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urban policy']
+  },
+  {
+    id: 256,
+    quote: 'Parasitarchies survive by inheriting legitimacy and sabotaging accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['parasitarchy']
+  },
+  {
+    id: 257,
+    quote: 'Not all complexity is bad—but some of it is hiding who benefits.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['complexity']
+  },
+  {
+    id: 258,
+    quote: 'Not all complexity is bad—but some of it is hiding who benefits.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['complexity']
+  },
+  {
+    id: 259,
+    quote: 'Public trust is easier to perform than to build, especially in digital systems.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['public trust']
+  },
+  {
+    id: 260,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 261,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 262,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 263,
+    quote: 'Not all complexity is bad—but some of it is hiding who benefits.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['complexity']
+  },
+  {
+    id: 264,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 265,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 266,
+    quote: 'Infrastructure is not neutral—it encodes values, access, and exclusion.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['civic infrastructure']
+  },
+  {
+    id: 267,
+    quote: 'Infrastructure is not neutral—it encodes values, access, and exclusion.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['civic infrastructure']
+  },
+  {
+    id: 268,
+    quote: 'Parasitarchies survive by inheriting legitimacy and sabotaging accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['parasitarchy']
+  },
+  {
+    id: 269,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 270,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 271,
+    quote: 'Not all complexity is bad—but some of it is hiding who benefits.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['complexity']
+  },
+  {
+    id: 272,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 273,
+    quote: 'Public trust is easier to perform than to build, especially in digital systems.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['public trust']
+  },
+  {
+    id: 274,
+    quote: 'Maintenance is where most systems fail—and where few designers look.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['maintenance']
+  },
+  {
+    id: 275,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 276,
+    quote: 'A broken system is still a system. It’s just working toward different ends.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['systems']
+  },
+  {
+    id: 277,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 278,
+    quote: 'Feedback loops without power redistribution are rituals, not reforms.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['feedback systems']
+  },
+  {
+    id: 279,
+    quote: 'Zoning codes shape lives more than most laws.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urban policy']
+  },
+  {
+    id: 280,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 281,
+    quote: 'If a system cannot be questioned, it does not deserve our trust.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['legibility']
+  },
+  {
+    id: 282,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 283,
+    quote: "Cities are not problems to be solved—they're questions we must learn to live with.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['urbanism']
+  },
+  {
+    id: 284,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 285,
+    quote: 'We are trading coherence for convenience—and calling it innovation.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['cultural erosion']
+  },
+  {
+    id: 286,
+    quote: 'A broken system is still a system. It’s just working toward different ends.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['systems']
+  },
+  {
+    id: 287,
+    quote: 'Parasitarchies survive by inheriting legitimacy and sabotaging accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['parasitarchy']
+  },
+  {
+    id: 288,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 289,
+    quote: 'Designing for equity means designing for durability, not just access.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['equity']
+  },
+  {
+    id: 290,
+    quote: 'Public trust is easier to perform than to build, especially in digital systems.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['public trust']
+  },
+  {
+    id: 291,
+    quote: 'Simulated systems create the comfort of order without delivering function.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['simulation']
+  },
+  {
+    id: 292,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 293,
+    quote: 'Not all complexity is bad—but some of it is hiding who benefits.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['complexity']
+  },
+  {
+    id: 294,
+    quote: 'Hype is the lubricant of collapse masquerading as progress.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['hype studies']
+  },
+  {
+    id: 295,
+    quote: "Design is not just what happens on screens. It's what happens after.",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['consequence design']
+  },
+  {
+    id: 296,
+    quote: 'A broken system is still a system. It’s just working toward different ends.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['systems']
+  },
+  {
+    id: 297,
+    quote: 'Service design without consequence is theater.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['service design']
+  },
+  {
+    id: 298,
+    quote: "Decay isn’t always visible. Sometimes it just looks like 'business as usual.'",
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['institutional decay']
+  },
+  {
+    id: 299,
+    quote: 'Maintenance is where most systems fail—and where few designers look.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['maintenance']
+  },
+  {
+    id: 300,
+    quote: 'Generative AI tools often hallucinate context and erase accountability.',
+    author: 'DC Niemi',
+    source: 'Generated from conversation themes',
+    tags: ['AI']
+  }
+];
 
         const QuoteCard = ({ quote, onTagClick }) => {
             const cardColors = [
