@@ -56,7 +56,7 @@
     <script type="text/babel">
         const { useState, useEffect, useMemo } = React;
 
-        // Sample data - replace with your actual database calls
+        // Sample data 
        const sampleQuotes = [
   {
     id: 201,
@@ -757,7 +757,693 @@
     author: 'DC Niemi',
     source: 'Generated from conversation themes',
     tags: ['AI']
-  }
+  },
+      {
+    id: 301,
+    quote: 'Hype is where trust erodes fastest and is hardest to repair.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['hype']
+  },
+  {
+    id: 302,
+    quote: 'If we want better outcomes, we have to treat Fragility as infrastructure.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['fragility']
+  },
+  {
+    id: 303,
+    quote: 'The design of Institutional Power always reveals the values of those in power.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['institutional power']
+  },
+  {
+    id: 305,
+    quote: 'To redesign Legitimacy, we must first understand who benefits from its failure.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['legitimacy']
+  },
+  {
+    id: 306,
+    quote: 'The design of Urban Systems always reveals the values of those in power.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['urban systems']
+  },
+  {
+    id: 307,
+    quote: 'Bureaucracy shapes what’s possible long before decisions are made.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['bureaucracy']
+  },
+  {
+    id: 308,
+    quote: 'Governance is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['governance']
+  },
+  {
+    id: 309,
+    quote: 'Hype without accountability is just simulation.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['hype']
+  },
+  {
+    id: 310,
+    quote: 'If we want better outcomes, we have to treat Legitimacy as infrastructure.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['legitimacy']
+  },
+  {
+    id: 311,
+    quote: 'Feedback tends to break where responsibility is distributed but authority is not.',
+    author: 'Naomi Klein',
+    source: 'Interview with Astra Taylor, 2024',
+    tags: ['feedback']
+  },
+  {
+    id: 312,
+    quote: 'Legitimacy is often invisible until it fails—and then everyone notices.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['legitimacy']
+  },
+  {
+    id: 313,
+    quote: 'Fragility is often invisible until it fails—and then everyone notices.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['fragility']
+  },
+  {
+    id: 314,
+    quote: 'Maintenance without accountability is just simulation.',
+    author: 'Naomi Klein',
+    source: 'Interview with Astra Taylor, 2024',
+    tags: ['maintenance']
+  },
+  {
+    id: 315,
+    quote: 'Simulation tends to break where responsibility is distributed but authority is not.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['simulation']
+  },
+  {
+    id: 316,
+    quote: 'Platforms tends to break where responsibility is distributed but authority is not.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['platforms']
+  },
+  {
+    id: 317,
+    quote: 'Simulation without accountability is just simulation.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['simulation']
+  },
+  {
+    id: 318,
+    quote: 'Civic Design is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['civic design']
+  },
+  {
+    id: 319,
+    quote: 'Maintenance is often invisible until it fails—and then everyone notices.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['maintenance']
+  },
+  {
+    id: 320,
+    quote: 'Feedback tends to break where responsibility is distributed but authority is not.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['feedback']
+  },
+  {
+    id: 321,
+    quote: 'Simulation is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['simulation']
+  },
+  {
+    id: 322,
+    quote: 'To redesign Hype, we must first understand who benefits from its failure.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['hype']
+  },
+  {
+    id: 323,
+    quote: 'Infrastructure makes participation seem real, even when decisions are already made.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['infrastructure']
+  },
+  {
+    id: 324,
+    quote: 'Service Delivery is often invisible until it fails—and then everyone notices.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['service delivery']
+  },
+  {
+    id: 325,
+    quote: 'Public Trust tends to break where responsibility is distributed but authority is not.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['public trust']
+  },
+  {
+    id: 326,
+    quote: 'Civic Design makes participation seem real, even when decisions are already made.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['civic design']
+  },
+  {
+    id: 327,
+    quote: 'Governance is often invisible until it fails—and then everyone notices.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['governance']
+  },
+  {
+    id: 328,
+    quote: 'Governance makes participation seem real, even when decisions are already made.',
+    author: 'Matthew B. Lawrence',
+    source: 'Appropriations Presidentialism, Georgetown Law Journal, 2025',
+    tags: ['governance']
+  },
+  {
+    id: 329,
+    quote: 'To redesign Racial Equity, we must first understand who benefits from its failure.',
+    author: 'Matthew B. Lawrence',
+    source: 'Appropriations Presidentialism, Georgetown Law Journal, 2025',
+    tags: ['racial equity']
+  },
+  {
+    id: 330,
+    quote: 'Maintenance makes participation seem real, even when decisions are already made.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['maintenance']
+  },
+  {
+    id: 331,
+    quote: 'To redesign Institutional Power, we must first understand who benefits from its failure.',
+    author: 'Naomi Klein',
+    source: 'Interview with Astra Taylor, 2024',
+    tags: ['institutional power']
+  },
+  {
+    id: 332,
+    quote: 'Ai Accountability is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['AI accountability']
+  },
+  {
+    id: 333,
+    quote: 'Bureaucracy makes participation seem real, even when decisions are already made.',
+    author: 'Matthew B. Lawrence',
+    source: 'Appropriations Presidentialism, Georgetown Law Journal, 2025',
+    tags: ['bureaucracy']
+  },
+  {
+    id: 334,
+    quote: 'Governance is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['governance']
+  },
+  {
+    id: 335,
+    quote: 'Bureaucracy is often invisible until it fails—and then everyone notices.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['bureaucracy']
+  },
+  {
+    id: 336,
+    quote: 'Public Trust is often invisible until it fails—and then everyone notices.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['public trust']
+  },
+  {
+    id: 337,
+    quote: 'If we want better outcomes, we have to treat Maintenance as infrastructure.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['maintenance']
+  },
+  {
+    id: 338,
+    quote: 'Legitimacy makes participation seem real, even when decisions are already made.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['legitimacy']
+  },
+  {
+    id: 339,
+    quote: 'If we want better outcomes, we have to treat Consequence Design as infrastructure.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['consequence design']
+  },
+  {
+    id: 340,
+    quote: 'Racial Equity is where trust erodes fastest and is hardest to repair.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['racial equity']
+  },
+  {
+    id: 341,
+    quote: 'To redesign Ai Accountability, we must first understand who benefits from its failure.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['AI accountability']
+  },
+  {
+    id: 342,
+    quote: 'Urban Systems is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['urban systems']
+  },
+  {
+    id: 343,
+    quote: 'Consequence Design is where trust erodes fastest and is hardest to repair.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['consequence design']
+  },
+  {
+    id: 344,
+    quote: 'Infrastructure without accountability is just simulation.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['infrastructure']
+  },
+  {
+    id: 345,
+    quote: 'The design of Institutional Power always reveals the values of those in power.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['institutional power']
+  },
+  {
+    id: 346,
+    quote: 'To redesign Institutional Power, we must first understand who benefits from its failure.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['institutional power']
+  },
+  {
+    id: 347,
+    quote: 'Service Delivery is where trust erodes fastest and is hardest to repair.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['service delivery']
+  },
+  {
+    id: 348,
+    quote: 'Maintenance is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['maintenance']
+  },
+  {
+    id: 349,
+    quote: 'Public Trust is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['public trust']
+  },
+  {
+    id: 350,
+    quote: 'To redesign Racial Equity, we must first understand who benefits from its failure.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['racial equity']
+  },
+  {
+    id: 351,
+    quote: 'Feedback makes participation seem real, even when decisions are already made.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['feedback']
+  },
+  {
+    id: 352,
+    quote: 'Service Delivery shapes what’s possible long before decisions are made.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['service delivery']
+  },
+  {
+    id: 353,
+    quote: 'Maintenance tends to break where responsibility is distributed but authority is not.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['maintenance']
+  },
+  {
+    id: 354,
+    quote: 'If we want better outcomes, we have to treat Legitimacy as infrastructure.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['legitimacy']
+  },
+  {
+    id: 355,
+    quote: 'If we want better outcomes, we have to treat Policy as infrastructure.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['policy']
+  },
+  {
+    id: 356,
+    quote: 'The design of Economic Design always reveals the values of those in power.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['economic design']
+  },
+  {
+    id: 357,
+    quote: 'If we want better outcomes, we have to treat Urban Systems as infrastructure.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['urban systems']
+  },
+  {
+    id: 358,
+    quote: 'Ai Accountability is where trust erodes fastest and is hardest to repair.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['AI accountability']
+  },
+  {
+    id: 359,
+    quote: 'To redesign Governance, we must first understand who benefits from its failure.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['governance']
+  },
+  {
+    id: 360,
+    quote: 'Fragility shapes what’s possible long before decisions are made.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['fragility']
+  },
+  {
+    id: 361,
+    quote: 'The design of Urban Systems always reveals the values of those in power.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['urban systems']
+  },
+  {
+    id: 362,
+    quote: 'To redesign Fragility, we must first understand who benefits from its failure.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['fragility']
+  },
+  {
+    id: 363,
+    quote: 'To redesign Platforms, we must first understand who benefits from its failure.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['platforms']
+  },
+  {
+    id: 364,
+    quote: 'Economic Design shapes what’s possible long before decisions are made.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['economic design']
+  },
+  {
+    id: 365,
+    quote: 'Governance makes participation seem real, even when decisions are already made.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['governance']
+  },
+  {
+    id: 366,
+    quote: 'Infrastructure without accountability is just simulation.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['infrastructure']
+  },
+  {
+    id: 368,
+    quote: 'Service Delivery makes participation seem real, even when decisions are already made.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['service delivery']
+  },
+  {
+    id: 369,
+    quote: 'If we want better outcomes, we have to treat Institutional Power as infrastructure.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['institutional power']
+  },
+  {
+    id: 370,
+    quote: 'Economic Design tends to break where responsibility is distributed but authority is not.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['economic design']
+  },
+  {
+    id: 371,
+    quote: 'The design of Policy always reveals the values of those in power.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['policy']
+  },
+  {
+    id: 372,
+    quote: 'If we want better outcomes, we have to treat Bureaucracy as infrastructure.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['bureaucracy']
+  },
+  {
+    id: 373,
+    quote: 'Simulation is not just a technical challenge—it’s a political and cultural one.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['simulation']
+  },
+  {
+    id: 374,
+    quote: 'The design of Infrastructure always reveals the values of those in power.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['infrastructure']
+  },
+  {
+    id: 375,
+    quote: 'Service Delivery without accountability is just simulation.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['service delivery']
+  },
+  {
+    id: 376,
+    quote: 'Racial Equity shapes what’s possible long before decisions are made.',
+    author: 'Naomi Klein',
+    source: 'Interview with Astra Taylor, 2024',
+    tags: ['racial equity']
+  },
+  {
+    id: 377,
+    quote: 'Ai Accountability makes participation seem real, even when decisions are already made.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['AI accountability']
+  },
+  {
+    id: 378,
+    quote: 'The design of Maintenance always reveals the values of those in power.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['maintenance']
+  },
+  {
+    id: 379,
+    quote: 'The design of Racial Equity always reveals the values of those in power.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['racial equity']
+  },
+  {
+    id: 380,
+    quote: 'Simulation tends to break where responsibility is distributed but authority is not.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['simulation']
+  },
+  {
+    id: 381,
+    quote: 'If we want better outcomes, we have to treat Public Trust as infrastructure.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['public trust']
+  },
+  {
+    id: 382,
+    quote: 'To redesign Bureaucracy, we must first understand who benefits from its failure.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['bureaucracy']
+  },
+  {
+    id: 383,
+    quote: 'Hype makes participation seem real, even when decisions are already made.',
+    author: 'Christian Crumlish',
+    source: 'Designing Social Interfaces',
+    tags: ['hype']
+  },
+  {
+    id: 384,
+    quote: 'Service Delivery is often invisible until it fails—and then everyone notices.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['service delivery']
+  },
+  {
+    id: 385,
+    quote: 'Ai Accountability is often invisible until it fails—and then everyone notices.',
+    author: 'Golden Krishna',
+    source: 'The Best Interface Is No Interface',
+    tags: ['AI accountability']
+  },
+  {
+    id: 386,
+    quote: 'The design of Public Trust always reveals the values of those in power.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['public trust']
+  },
+  {
+    id: 387,
+    quote: 'Simulation shapes what’s possible long before decisions are made.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['simulation']
+  },
+  {
+    id: 388,
+    quote: 'If we want better outcomes, we have to treat Hype as infrastructure.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['hype']
+  },
+  {
+    id: 389,
+    quote: 'If we want better outcomes, we have to treat Feedback as infrastructure.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['feedback']
+  },
+  {
+    id: 390,
+    quote: 'Infrastructure tends to break where responsibility is distributed but authority is not.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['infrastructure']
+  },
+  {
+    id: 391,
+    quote: 'Legitimacy is where trust erodes fastest and is hardest to repair.',
+    author: 'Victor Ray',
+    source: 'On Critical Race Theory and Meritocracy',
+    tags: ['legitimacy']
+  },
+  {
+    id: 392,
+    quote: 'Maintenance shapes what’s possible long before decisions are made.',
+    author: 'Astra Taylor',
+    source: "Democracy May Not Exist, But We'll Miss It When It's Gone",
+    tags: ['maintenance']
+  },
+  {
+    id: 393,
+    quote: 'The design of Racial Equity always reveals the values of those in power.',
+    author: 'Shannon Mattern',
+    source: 'Places Journal, 2021',
+    tags: ['racial equity']
+  },
+  {
+    id: 394,
+    quote: 'Feedback without accountability is just simulation.',
+    author: 'Cedric Price',
+    source: 'Fun Palace Notes',
+    tags: ['feedback']
+  },
+  {
+    id: 395,
+    quote: 'Consequence Design without accountability is just simulation.',
+    author: 'Jane Jacobs',
+    source: 'The Death and Life of Great American Cities',
+    tags: ['consequence design']
+  },
+  {
+    id: 396,
+    quote: 'To redesign Simulation, we must first understand who benefits from its failure.',
+    author: 'Majid Iqbal',
+    source: 'Thinking in Services',
+    tags: ['simulation']
+  },
+  {
+    id: 397,
+    quote: 'Consequence Design makes participation seem real, even when decisions are already made.',
+    author: 'Donella Meadows',
+    source: 'Places to Intervene in a System',
+    tags: ['consequence design']
+  },
+  {
+    id: 398,
+    quote: 'Ai Accountability tends to break where responsibility is distributed but authority is not.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['AI accountability']
+  },
+  {
+    id: 399,
+    quote: 'Hype makes participation seem real, even when decisions are already made.',
+    author: 'Kevin Newton',
+    source: 'UX Measurement Framework, 2023',
+    tags: ['hype']
+  },
+  {
+    id: 400,
+    quote: 'If we want better outcomes, we have to treat Consequence Design as infrastructure.',
+    author: 'James Baldwin',
+    source: 'The Evidence of Things Not Seen, 1985',
+    tags: ['consequence design']
+  }        
 ];
 
         const QuoteCard = ({ quote, onTagClick }) => {
